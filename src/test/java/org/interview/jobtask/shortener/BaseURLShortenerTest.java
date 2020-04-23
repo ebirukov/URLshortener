@@ -1,28 +1,26 @@
 package org.interview.jobtask.shortener;
 
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class BaseURLShortenerTest {
 
-    private KeywordGenerator keywordGenerator = mock(KeywordGenerator.class);
+    private URLStorageImpl storage = mock(URLStorageImpl.class);
 
-    private URLStorage storage = mock(URLStorage.class);
-
-    private URLShortener urlShortener = new BaseURLShortener(keywordGenerator, storage);
+    private URLShortener urlShortener = new BaseURLShortener(storage);
 
     @Test
     public void shortening() throws KeywordCollisionException {
         String url = "https://blog.mysite.com/cool-article";
-        String output = urlShortener.shortening(url, "BEST-ARTICLE");
+        String keyword = "BEST-ARTICLE";
+        when(storage.store(url, keyword)).thenReturn(keyword);
+        String output = urlShortener.shortening(url, keyword);
         assertEquals("https://short.en/BEST-ARTICLE", output);
 
-        when(keywordGenerator.generate()).thenReturn("Pq34r");
-        assertEquals("https://short.en/Pq34r", urlShortener.shortening(url));
+        when(storage.store(url, null)).thenReturn("Pq34r");
+        assertEquals("https://short.en/Pq34r", urlShortener.shortening(url, null));
     }
 
     @Test

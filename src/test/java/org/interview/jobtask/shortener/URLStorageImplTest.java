@@ -2,11 +2,9 @@ package org.interview.jobtask.shortener;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+public class URLStorageImplTest {
 
-public class URLStorageTest {
-
-    private URLStorage storage = URLStorage.instance();
+    private URLStorageImpl storage = URLStorageImpl.instance();
 
     @Test(expected = KeywordCollisionException.class)
     public void store() throws KeywordCollisionException {

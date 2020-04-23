@@ -14,11 +14,13 @@ public class Application {
 
     public static final String HTTPS = "https";
 
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
     public static void main(String[] args) {
         URLShortener shortener = createURLShortener(args);
         while (true) {
             out.println("---------------------------");
-            out.println("input original url for shortening, or short url for retrieve original");
+            out.println("input original url to shortening, or short url to retrieve original");
             out.println("---------------------------");
             URL inputUrl = readURL();
             if (SHORT_DOMAIN.equalsIgnoreCase(inputUrl.getHost())) {
@@ -30,9 +32,7 @@ public class Application {
                 String originalUrl = inputUrl.toString();
                 String shortenUrl = null;
                 try {
-                    shortenUrl = keyword != null ?
-                            shortener.shortening(originalUrl, keyword)
-                            : shortener.shortening(originalUrl);
+                    shortenUrl = shortener.shortening(originalUrl, keyword);
                     out.println("shorten URL: " + shortenUrl);
                 } catch (KeywordCollisionException e) {
                     e.printStackTrace();
@@ -43,7 +43,16 @@ public class Application {
     }
 
     private static URLShortener createURLShortener(String[] args) {
-        return new BaseURLShortener(KeywordGenerator.instance(), URLStorage.instance());
+        String storage = args.length == 1
+                            && "v2".equalsIgnoreCase(args[0]) ?
+                        args[0] : "v1";
+        out.println("start with storage " + storage);
+        if ("v2".equalsIgnoreCase(storage)) {
+            return new BaseURLShortener(URLStorageImplV2.instance());
+        } else {
+            return new BaseURLShortener(URLStorageImpl.instance());
+        }
+
     }
 
     private static String readKeyword() {
