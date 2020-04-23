@@ -8,13 +8,14 @@ public class URLStorageImplV2 implements URLStorage {
 
     // mininal 5 letter keyword
     public static final String MIN5LETTER_KEYWORD = "baaaa";
-    // mininal 5 letter keyword index
+
     private final Map<String, Integer> keywordDictionary;
 
     private final ArrayList<String> storage;
 
     private final IdentityCodec codec;
 
+    // mininal 5 letter keyword index
     private int shiftIndex;
 
     private URLStorageImplV2(IdentityCodec codec) {
@@ -24,7 +25,8 @@ public class URLStorageImplV2 implements URLStorage {
     }
 
     public static URLStorageImplV2 instance() {
-        return new URLStorageImplV2(IdentityCodec.of(Application.ALPHABET));
+        IdentityCodec codec = IdentityCodec.of(Application.ALPHABET);
+        return new URLStorageImplV2(codec);
     }
 
     @Override
