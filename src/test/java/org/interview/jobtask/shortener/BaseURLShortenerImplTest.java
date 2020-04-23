@@ -1,15 +1,17 @@
 package org.interview.jobtask.shortener;
 
+import org.interview.jobtask.shortener.storage.KeywordCollisionException;
+import org.interview.jobtask.shortener.storage.URLStorageImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class BaseURLShortenerTest {
+public class BaseURLShortenerImplTest {
 
     private URLStorageImpl storage = mock(URLStorageImpl.class);
 
-    private URLShortener urlShortener = new BaseURLShortener(storage);
+    private URLShortener urlShortener = new BaseURLShortenerImpl(storage);
 
     @Test
     public void shortening() throws KeywordCollisionException {

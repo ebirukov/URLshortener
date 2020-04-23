@@ -1,4 +1,4 @@
-package org.interview.jobtask.shortener;
+package org.interview.jobtask.shortener.storage.identity;
 
 /**
  * Биективное отображение числовое значение в строку и обратно

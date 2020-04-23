@@ -1,16 +1,19 @@
 package org.interview.jobtask.shortener;
 
+import org.interview.jobtask.shortener.storage.KeywordCollisionException;
+import org.interview.jobtask.shortener.storage.URLStorage;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 
 import static org.interview.jobtask.shortener.Application.*;
 
-public class BaseURLShortener implements URLShortener {
+public class BaseURLShortenerImpl implements URLShortener {
 
     private final URLStorage storage;
 
-    public BaseURLShortener(URLStorage urlStorage) {
+    public BaseURLShortenerImpl(URLStorage urlStorage) {
         this.storage = Objects.requireNonNull(urlStorage);
     }
 

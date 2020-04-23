@@ -1,5 +1,6 @@
 package org.interview.jobtask.shortener;
 
+import org.interview.jobtask.shortener.storage.identity.IdentityCodec;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,4 +1,4 @@
-package org.interview.jobtask.shortener;
+package org.interview.jobtask.shortener.storage.identity;
 
 import java.util.concurrent.ThreadLocalRandom;
 

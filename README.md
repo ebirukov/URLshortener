@@ -15,7 +15,6 @@
     
     where "v2" option use URLStorageImplV2 implementation class 
     
-## Additional
+The URLStorageImplV2 class, instead of randomly generating 5 alpha-numeric keyword, uses an incremental alpha-numeric counter. This allows you to store web links in an array, adding and searching by the index of the array. 
 
-    The URLStorageImplV2 class, instead of randomly generating 5 alpha-numeric keyword, uses an incremental alpha-numeric counter. This allows you to store web links in an array, adding and searching by the index of the array. 
-    This approach reduces memory consumption for storing web links and simplifies the use of external storage sources.
+This approach reduces memory consumption for storing web links and simplifies the use of external storage sources.

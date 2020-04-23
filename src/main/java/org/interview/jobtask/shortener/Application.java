@@ -1,5 +1,9 @@
 package org.interview.jobtask.shortener;
 
+import org.interview.jobtask.shortener.storage.KeywordCollisionException;
+import org.interview.jobtask.shortener.storage.URLStorageImpl;
+import org.interview.jobtask.shortener.storage.URLStorageImplV2;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
@@ -48,9 +52,9 @@ public class Application {
                         args[0] : "v1";
         out.println("start with storage " + storage);
         if ("v2".equalsIgnoreCase(storage)) {
-            return new BaseURLShortener(URLStorageImplV2.instance());
+            return new BaseURLShortenerImpl(URLStorageImplV2.instance());
         } else {
-            return new BaseURLShortener(URLStorageImpl.instance());
+            return new BaseURLShortenerImpl(URLStorageImpl.instance());
         }
 
     }

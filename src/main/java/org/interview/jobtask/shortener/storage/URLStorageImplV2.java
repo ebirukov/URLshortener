@@ -1,4 +1,7 @@
-package org.interview.jobtask.shortener;
+package org.interview.jobtask.shortener.storage;
+
+import org.interview.jobtask.shortener.Application;
+import org.interview.jobtask.shortener.storage.identity.IdentityCodec;
 
 import java.util.ArrayList;
 import java.util.HashMap;

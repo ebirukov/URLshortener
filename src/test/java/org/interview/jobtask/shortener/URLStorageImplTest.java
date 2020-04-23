@@ -1,5 +1,7 @@
 package org.interview.jobtask.shortener;
 
+import org.interview.jobtask.shortener.storage.KeywordCollisionException;
+import org.interview.jobtask.shortener.storage.URLStorageImpl;
 import org.junit.Test;
 
 public class URLStorageImplTest {
